@@ -376,8 +376,7 @@
           "accountType": {
             "$ref": "#/components/schemas/EnumAccountPaymentsType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePaymentConsent": {
         "type": "object",
@@ -404,11 +403,9 @@
               "debtorAccount": {
                 "$ref": "#/components/schemas/DebtorAccount"
               }
-            },
-            "additionalProperties": false
+            }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePixPayment": {
         "type": "object",
@@ -420,8 +417,7 @@
           "data": {
             "$ref": "#/components/schemas/CreatePixPaymentData"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreatePixPaymentData": {
         "type": "object",
@@ -458,8 +454,7 @@
             "pattern": "\\w*\\W*",
             "description": "Chave cadastrada no DICT pertencente ao recebedor. Os tipos de chaves podem ser: telefone, e-mail, cpf/cnpj ou chave aleatória.  \nNo caso de telefone celular deve ser informado no padrão E.1641.  \nPara e-mail deve ter o formato xxxxxxxx@xxxxxxx.xxx(.xx) e no máximo 77 caracteres.  \nNo caso de CPF deverá ser informado com 11 números, sem pontos ou traços.  \nPara o caso de CNPJ deverá ser informado com 14 números, sem pontos ou traços.  \nNo caso de chave aleatória deve ser informado o UUID gerado pelo DICT, conforme formato especificado na RFC41223.  \n[Restrição] Preenchimento obrigatório para pagamentos via Chave.\n"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DebtorAccount": {
         "type": "object",
@@ -506,8 +501,7 @@
           "accountType": {
             "$ref": "#/components/schemas/EnumAccountPaymentsType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "EnumAccountPaymentsType": {
         "type": "string",
@@ -679,8 +673,7 @@
           "accountType": {
             "$ref": "#/components/schemas/EnumAccountPaymentsType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Identification": {
         "type": "object",
@@ -710,8 +703,7 @@
             "example": "Marco Antonio de Brito",
             "description": "Em caso de pessoa natural deve ser informado o nome completo do titular da conta do recebedor.  \nEm caso de pessoa jurídica deve ser informada a razão social ou o nome fantasia da conta do recebedor.\n"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PaymentConsent": {
         "type": "object",
@@ -750,8 +742,7 @@
             "example": 100000.12,
             "description": "Valor da transação com 2 casas decimais.\n"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PaymentPix": {
         "type": "object",
@@ -777,8 +768,7 @@
             "example": "BRL",
             "description": "Código da moeda nacional segundo modelo ISO-4217, ou seja, 'BRL'.  \nTodos os valores monetários informados estão representados com a moeda vigente do Brasil.\n"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ResponseError": {
         "type": "object",
@@ -818,15 +808,13 @@
                   "pattern": "\\w*\\W*",
                   "maxLength": 2048
                 }
-              },
-              "additionalProperties": false
+              }
             }
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "422ResponseErrorCreateConsent": {
         "type": "object",
@@ -865,15 +853,13 @@
                   "example": "Meio de pagamento inválido.",
                   "description": "Descrição específica do erro de acordo com o código reportado.\n• 01: Meio de pagamento inválido;  \n• 02: Data de pagamento inválida no contexto, por exemplo, data no passado.  \nPara pagamentos únicos deve ser informada a data atual, do dia corrente.    \n• 99: Não informada pela instituição detentora da conta. \n"
                 }
-              },
-              "additionalProperties": false
+              }
             }
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "422ResponseErrorCreatePixPayment": {
         "type": "object",
@@ -912,15 +898,13 @@
                   "example": "Meio de pagamento inválido.",
                   "description": "Descrição específica do erro de acordo com o código reportado.  \n• 01: A conta selecionada não possui saldo suficiente para realizar o pagamento.  \n• 02: O beneficiário informado no consentimento não é o mesmo do esperado pelo DICT.  \n• 03: O valor informado no consentimento não é o mesmo valor do informado no payload de pagamento.    \n• 04: O valor (ou quantidade de transações) ultrapassa a faixa de limite parametrizada na detentora para permitir a realização de transações pelo cliente.  \n• 05: O valor enviado não é válido para o QR Code informado.  \n• 06: Validação de expiração, validação de vencimento ou Status Válido.  \n• 07: Consentimento inválido (status diferente de \"AUTHORISED\" ou está expirado).  \n• 10: Requisição está fora da janela de funcionamento.        \n• 99: Não informada pela instituição detentora da conta. \n"
                 }
-              },
-              "additionalProperties": false
+              }
             }
           },
           "meta": {
             "$ref": "#/components/schemas/Meta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ResponsePaymentConsent": {
         "type": "object",
@@ -979,11 +963,9 @@
               "debtorAccount": {
                 "$ref": "#/components/schemas/DebtorAccount"
               }
-            },
-            "additionalProperties": false
+            }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ResponsePixPayment": {
         "type": "object",
@@ -995,8 +977,7 @@
           "data": {
             "$ref": "#/components/schemas/ResponsePixPaymentData"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ResponsePixPaymentData": {
         "type": "object",
@@ -1075,8 +1056,7 @@
           "creditorAccount": {
             "$ref": "#/components/schemas/CreditorAccount"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Links": {
         "type": "object",
@@ -1126,8 +1106,7 @@
             "example": "https://api.banco.com.br/open-banking/api/v1/resource",
             "pattern": "^(https?:\\/\\/)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Meta": {
         "type": "object",
@@ -1158,8 +1137,7 @@
             "format": "date-time",
             "example": "2021-05-21T08:30:00Z"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     "parameters": {

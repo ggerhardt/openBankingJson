@@ -1614,7 +1614,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ResponsePixPayment"
+              "$ref": "#/components/schemas/201PaymentsInitiationPixPaymentCreated"
             }
           }
         }

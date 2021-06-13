@@ -924,7 +924,7 @@
               "status",
               "creditor",
               "payment",
-              "debtor"
+              "debtorAccount"
             ],
             "properties": {
               "consentId": {

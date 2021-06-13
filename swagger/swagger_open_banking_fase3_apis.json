@@ -332,7 +332,7 @@
   "components": {
     "schemas": {
       "Account": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto que contém a identificação de uma conta. \n",
         "required": [
           "ispb",
@@ -379,13 +379,13 @@
         "additionalProperties": false
       },
       "CreatePaymentConsent": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "data"
         ],
         "properties": {
           "data": {
-            "type": "object",
+            "type": "object","additionalProperties": false,
             "description": "Objeto contendo as informações de consentimento para a iniciação de pagamento individual.",
             "required": [
               "creditor",
@@ -408,7 +408,7 @@
         "additionalProperties": false
       },
       "CreatePixPayment": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "data"
         ],
@@ -420,7 +420,7 @@
         "additionalProperties": false
       },
       "CreatePixPaymentData": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto contendo dados do pagamento e do recebedor (creditor).",
         "required": [
           "payment",
@@ -457,7 +457,7 @@
         "additionalProperties": false
       },
       "DebtorAccount": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto que contém a identificação da conta de origem do pagador.  \nAs informações quanto à conta de origem do pagador poderão ser trazidas no consentimento para a detentora, caso a iniciadora tenha coletado essas informações do cliente. Do contrário, será coletada na detentora e trazida para a iniciadora como resposta à criação do pagamento.\n",
         "required": [
           "ispb",
@@ -629,7 +629,7 @@
         "description": "Estado atual da iniciação de pagamento. O estado evolui na seguinte ordem:  \n1. PDNG (PENDING) - Iniciação de pagamento ou transação de pagamento está pendente. Checagens adicionais em realização.  \n2. PART (PARTIALLY ACCEPTED) - Aguardando autorização múltipla alçada.  \n3. ACSP (ACCEPTED_SETTLEMENT_IN_PROCESS) - Iniciação de pagamento aceita e processamento do pagamento foi iniciado.  \n4. ACSC (ACCEPTED_SETTLEMENT_COMPLETED_DEBITOR_ACCOUNT) - Débito realizado na conta do pagador.  \n5. ACCC (ACCEPTED_SETTLEMENT_COMPLETED) - Crédito realizado na instituição de destino.  \nEm caso insucesso:  \nRJCT (REJECTED) - Instrução de pagamento rejeitada.\n"
       },
       "CreditorAccount": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto que contém a identificação da conta de destino do beneficiário/recebedor.  \n",
         "required": [
           "ispb",
@@ -676,7 +676,7 @@
         "additionalProperties": false
       },
       "Identification": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto contendo os dados do recebedor (creditor).",
         "required": [
           "personType",
@@ -706,7 +706,7 @@
         "additionalProperties": false
       },
       "PaymentConsent": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto contendo dados de pagamento para consentimento.",
         "required": [
           "type",
@@ -745,7 +745,7 @@
         "additionalProperties": false
       },
       "PaymentPix": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto contendo dados do pagameto como moeda e valor.",
         "required": [
           "amount",
@@ -771,7 +771,7 @@
         "additionalProperties": false
       },
       "ResponseError": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "errors"
         ],
@@ -781,7 +781,7 @@
             "minItems": 1,
             "maxItems": 13,
             "items": {
-              "type": "object",
+              "type": "object","additionalProperties": false,
               "required": [
                 "code",
                 "title",
@@ -817,7 +817,7 @@
         "additionalProperties": false
       },
       "422ResponseErrorCreateConsent": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "errors"
         ],
@@ -827,7 +827,7 @@
             "minItems": 1,
             "maxItems": 3,
             "items": {
-              "type": "object",
+              "type": "object","additionalProperties": false,
               "required": [
                 "code",
                 "title",
@@ -862,7 +862,7 @@
         "additionalProperties": false
       },
       "422ResponseErrorCreatePixPayment": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "errors"
         ],
@@ -872,7 +872,7 @@
             "minItems": 1,
             "maxItems": 9,
             "items": {
-              "type": "object",
+              "type": "object","additionalProperties": false,
               "required": [
                 "code",
                 "title",
@@ -907,13 +907,13 @@
         "additionalProperties": false
       },
       "ResponsePaymentConsent": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "data"
         ],
         "properties": {
           "data": {
-            "type": "object",
+            "type": "object","additionalProperties": false,
             "description": "Objeto contendo as informações de resposta do consentimento para a iniciação de pagamento individual.",
             "required": [
               "consentId",
@@ -968,7 +968,7 @@
         "additionalProperties": false
       },
       "ResponsePixPayment": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "required": [
           "data"
         ],
@@ -980,7 +980,7 @@
         "additionalProperties": false
       },
       "ResponsePixPaymentData": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Objeto contendo dados do pagamento e da conta do recebedor (creditor).",
         "required": [
           "paymentId",
@@ -1059,7 +1059,7 @@
         "additionalProperties": false
       },
       "Links": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Referências para outros recusos da API requisitada.",
         "required": [
           "self"
@@ -1109,7 +1109,7 @@
         "additionalProperties": false
       },
       "Meta": {
-        "type": "object",
+        "type": "object","additionalProperties": false,
         "description": "Meta informações referente a API requisitada.",
         "required": [
           "totalRecords",

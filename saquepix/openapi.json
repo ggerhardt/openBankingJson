@@ -38,84 +38,116 @@
             "content": {
               "application/json": {
                 "schema": {
-                        "$ref": "#/components/schemas/lista_ponto_Pix_saque"
+                  "type": "object",
+                  "required": [
+                    "registros",
+                    "meta",
+                    "links"
+                  ],
+                  "properties": {
+                    "registros": {
+                      "$ref": "#/components/schemas/lista_ponto_Pix_saque"
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/meta"
+                    },
+                    "links": {
+                      "$ref": "#/components/schemas/links"
+                    }
+                  }
                 },
                 "examples": {
                   "agente_saque_com_um_ponto_atendimento": {
-                    "value": [
-                      {
-                        "agente_saque": "Supermercado A",
-                        "pontos_atendimento": [
-                          {
-                            "latitude": "-30.02795",
-                            "longitude": "-51.22322",
-                            "logradouro": "Rua 7 de Setembro, 586",
-                            "bairro": "Centro",
-                            "cidade": "Porto Alegre",
-                            "estado": "RS",
-                            "cep": "90010190",
-                            "produtos": {
-                              "Pix-saque": true,
-                              "Pix-troco": true
-                            },
-                            "observacoes": "Pix Troco apenas para compras acima de 200 reais",
-                            "horarios_funcionamento": [
-                              {
-                                "dia": "SEGUNDA_FEIRA",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "18:00"
-                                },
-                                "valor_maximo_disponivel": "100.00"
+                    "value": {
+                      "registros": [
+                        {
+                          "agente_saque": "Supermercado A",
+                          "pontos_atendimento": [
+                            {
+                              "latitude": "-30.02795",
+                              "longitude": "-51.22322",
+                              "logradouro": "Rua 7 de Setembro, 586",
+                              "bairro": "Centro",
+                              "cidade": "Porto Alegre",
+                              "estado": "RS",
+                              "cep": "90010190",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": true
                               },
-                              {
-                                "dia": "TERCA_FEIRA",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "18:00"
+                              "observacoes": "Pix Troco apenas para compras acima de 200 reais",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
                                 },
-                                "valor_maximo_disponivel": "100.00"
-                              },
-                              {
-                                "dia": "QUARTA_FEIRA",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "18:00"
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
                                 },
-                                "valor_maximo_disponivel": "100.00"
-                              },
-                              {
-                                "dia": "QUINTA_FEIRA",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "18:00"
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
                                 },
-                                "valor_maximo_disponivel": "100.00"
-                              },
-                              {
-                                "dia": "SEXTA_FEIRA",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "18:00"
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
                                 },
-                                "valor_maximo_disponivel": "100.00"
-                              },
-                              {
-                                "dia": "SABADO",
-                                "horario": {
-                                  "abertura_saque": "09:00",
-                                  "fechamento_saque": "13:00"
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
                                 },
-                                "valor_maximo_disponivel": "70.00"
-                              }
-                            ]
-                          }
-                        ]
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "13:00"
+                                  },
+                                  "valor_maximo_disponivel": "70.00"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "meta":{
+                        "nome_transmissora": "Banco XYZ",
+                        "cnpj_transmissora": "99999999999999",
+                        "total_registros": 200,
+                        "total_paginas": 1
+                      },
+                      "links":{
+                        "self": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3",
+                        "first": "https://api.banco.com.br/open-banking/pontosPix/v1/",
+                        "prev": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2",
+                        "next":  "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4",
+                        "last":"https://api.banco.com.br/open-banking/pontosPix/v1/?page=5"
                       }
-                    ]
+                    }
                   },
                   "agente_saque_com_varios_pontos_atendimento": {
-                    "value": [
+                    "value": {
+                      "registros": [
                       {
                         "agente_saque": "Supermercado B",
                         "pontos_atendimento": [
@@ -377,7 +409,21 @@
                           }
                         ]
                       }
-                    ]
+                    ],
+                    "meta":{
+                      "nome_transmissora": "Banco XYZ",
+                      "cnpj_transmissora": "99999999999999",
+                      "total_registros": 200,
+                      "total_paginas": 1
+                    },
+                    "links":{
+                      "self": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3",
+                      "first": "https://api.banco.com.br/open-banking/pontosPix/v1/",
+                      "prev": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2",
+                      "next":  "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4",
+                      "last":"https://api.banco.com.br/open-banking/pontosPix/v1/?page=5"
+                    }
+                    }
                   }
                 }
               }
@@ -570,6 +616,70 @@
                 }
               }
             }
+          }
+        }
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "nome_transmissora": {
+            "type": "string",
+            "description": "Nome instituição fornecendo as informações",
+            "example": "Banco XYZ"
+          },
+          "cnpj_transmissora": {
+            "type": "string",
+            "minLength": 14,
+            "maxLength": 14,
+            "pattern": "^(\\d{14})$|^NA$",
+            "description": "Número completo do CNPJ da instituição responsável pela dependência - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.\nDeve-se ter apenas os números do CNPJ, sem máscara.",
+            "example": "45086338000178"
+          },
+          "total_registros": {
+            "type": "integer",
+            "description": "Total de pontos de atendimento encontrados",
+            "example": 1
+          },
+          "total_paginas": {
+            "type": "integer",
+            "description": "Total de páginas para os registros encontrados",
+            "example": 1
+          }
+        },
+        "required": [
+          "nome_transmissora",
+          "cnpj_transmissora",
+          "total_registros",
+          "total_paginas"
+        ]
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "URL da página atualmente requisitada.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3"
+          },
+          "first": {
+            "type": "string",
+            "description": "URL da primeira página de registros.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/"
+          },
+          "prev": {
+            "type": "string",
+            "description": "URL da página anterior de registros.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2"
+          },
+          "next": {
+            "type": "string",
+            "description": "URL da próxima página de registros.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4"
+          },
+          "last": {
+            "type": "string",
+            "description": "URL da última página de registros.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=5"
           }
         }
       }

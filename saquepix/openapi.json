@@ -457,6 +457,7 @@
                 "pontos_atendimento"
               ],
               "properties": {
+                "description": "Informações relativas aos pontos de atendimento de um agente de saque ou do participante que, diretamente, preste o serviço de saque.",
                 "cnpj_agente_saque": {
                   "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque.",
                   "type": "string",

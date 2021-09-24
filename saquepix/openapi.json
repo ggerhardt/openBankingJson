@@ -162,7 +162,7 @@
                           "nome_agente_saque": "Supermercado B",
                           "pontos_atendimento": [
                             {
-                              "nome": "Filial Belo Horizonte",
+                              "nome": "Supermercado B - Filial Belo Horizonte",
                               "latitude": "-19.93254",
                               "longitude": "-43.94905",
                               "logradouro": "Av Alvares Cabral 1605",
@@ -459,7 +459,7 @@
               ],
               "properties": {
                 "cnpj_agente_saque": {
-                  "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque.",
+                  "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque. Com 14 dígitos, sem máscara.",
                   "type": "string",
                   "pattern": "^[0-9]{14}$"
                 },
@@ -648,8 +648,8 @@
                 "type": "string",
                 "minLength": 8,
                 "maxLength": 8,
-                "pattern": "^(\\d{8})$|^NA$",
-                "description": "Número completo do CNPJ da instituição responsável pela dependência - o CNPJ corresponde ao número de inscrição no Cadastro de Pessoa Jurídica.\nDeve-se ter apenas os números do CNPJ, sem máscara.",
+                "pattern": "^(\\d{8})$",
+                "description": "Número do CNPJ da instituição transmitindo os dados.\nDeve-se ter apenas os 8 primeiros números do CNPJ, sem máscara.",
                 "example": "45086378"
               },
               "total_registros": {
@@ -709,7 +709,7 @@
           "page": {
             "name": "page",
             "in": "query",
-            "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', retornará do 26º registro ao 50º.",
+            "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º.",
             "schema": {
               "type": "integer",
               "default": 1,
@@ -722,7 +722,7 @@
           "description": "Quantidade total de registros por páginas.",
           "schema": {
             "type": "integer",
-            "default": 25,
+            "default": 100,
             "minimum": 1         
         }
       }

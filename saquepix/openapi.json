@@ -450,6 +450,7 @@
             "type": "array",
             "minItems": 1,
             "items": {
+              "description": "Lista de informações relativas aos pontos de atendimento dos agentes de saque ou do participante que, diretamente, preste o serviço de saque.",
               "type": "object",
               "required": [
                 "cnpj_agente_saque",
@@ -457,7 +458,6 @@
                 "pontos_atendimento"
               ],
               "properties": {
-                "description": "Informações relativas aos pontos de atendimento de um agente de saque ou do participante que, diretamente, preste o serviço de saque.",
                 "cnpj_agente_saque": {
                   "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque.",
                   "type": "string",

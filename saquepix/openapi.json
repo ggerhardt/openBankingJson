@@ -681,6 +681,7 @@
       },
       "links": {
         "type": "object",
+        "description": "Referências para outros recursos da API voltados para navegação.",
         "properties": {
           "self": {
             "type": "string",

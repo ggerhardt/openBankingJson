@@ -738,7 +738,7 @@
       "pageSize": {
         "name": "page-size",
         "in": "query",
-        "description": "Quantidade total de registros por páginas.",
+        "description": "Quantidade total de registros por páginas. Este campo, assim como 'page', é opcional. A estrutura 'links' do payload de resposta indica quando esta foi paginada.",
         "schema": {
           "type": "integer",
           "format": "int32",

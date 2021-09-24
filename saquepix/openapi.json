@@ -54,7 +54,7 @@
                   ],
                   "properties": {
                     "registros": {
-                        "$ref": "#/components/schemas/lista_ponto_Pix_saque"
+                      "$ref": "#/components/schemas/lista_ponto_Pix_saque"
                     },
                     "meta": {
                       "$ref": "#/components/schemas/meta"
@@ -447,283 +447,284 @@
     "schemas": {
       "lista_ponto_Pix_saque": {
         "description": "Lista de informações relativas aos pontos de atendimento dos agentes de saque ou do participante que, diretamente, preste o serviço de saque.",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "description": "Lista de informações relativas aos pontos de atendimento dos agentes de saque ou do participante que, diretamente, preste o serviço de saque.",
-              "type": "object",
-              "required": [
-                "cnpj_agente_saque",
-                "nome_agente_saque",
-                "pontos_atendimento"
-              ],
-              "properties": {
-                "cnpj_agente_saque": {
-                  "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque. Com 14 dígitos, sem máscara.",
-                  "type": "string",
-                  "pattern": "^[0-9]{14}$"
-                },
-                "nome_agente_saque": {
-                  "description": "Nome do agente de saque ou do participante que, diretamente, preste o serviço de saque.",
-                  "type": "string"
-                },
-                "pontos_atendimento": {
-                  "description": "Lista de todos os pontos de atendimento de um agente de saque ou do participante que, diretamente, preste o serviço de saque.",
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "description": "Detalhes de um ponto de atendimento.",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "description": "Lista de informações relativas aos pontos de atendimento dos agentes de saque ou do participante que, diretamente, preste o serviço de saque.",
+          "type": "object",
+          "required": [
+            "cnpj_agente_saque",
+            "nome_agente_saque",
+            "pontos_atendimento"
+          ],
+          "properties": {
+            "cnpj_agente_saque": {
+              "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque. Com 14 dígitos, sem máscara.",
+              "type": "string",
+              "pattern": "^[0-9]{14}$"
+            },
+            "nome_agente_saque": {
+              "description": "Nome do agente de saque ou do participante que, diretamente, preste o serviço de saque.",
+              "type": "string"
+            },
+            "pontos_atendimento": {
+              "description": "Lista de todos os pontos de atendimento de um agente de saque ou do participante que, diretamente, preste o serviço de saque.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "description": "Detalhes de um ponto de atendimento.",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "latitude",
+                  "longitude",
+                  "logradouro",
+                  "bairro",
+                  "cidade",
+                  "estado",
+                  "cep",
+                  "produtos",
+                  "horarios_funcionamento"
+                ],
+                "properties": {
+                  "nome": {
+                    "description": "Nome do ponto de atendimento. Este nome é opcional e tem como função detalhar cada ponto de atendimento de um agente de saque ou do participante que, diretamente, venha a prestar serviço de saque.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 50
+                  },
+                  "latitude": {
+                    "description": "Latitude da posição geográfica. A faixa de valores válida é de -90 a 90, sendo que devem ser utilizadas pelo menos 5 casas decimais.",
+                    "type": "string",
+                    "pattern": "^((-?90[.][0]{5,})|((-?[1-8]?[0-9])[.][0-9]{5,}))$"
+                  },
+                  "longitude": {
+                    "description": "Longitude da posição geográfica. A faixa de valores válida é de -180 a 180, sendo que devem ser utilizadas pelo menos 5 casas decimais.",
+                    "type": "string",
+                    "pattern": "^-?((180[.][0]{5,})|(((1[0-7][0-9])[.][0-9]{5,})|(([1-9]?[0-9])[.][0-9]{5,})))$"
+                  },
+                  "logradouro": {
+                    "description": "Logradouro do ponto de atendimento.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  },
+                  "bairro": {
+                    "description": "Bairro do ponto de atendimento.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "cidade": {
+                    "description": "Cidade do ponto de atendimento.",
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "estado": {
+                    "description": "Estado do ponto de atendimento.",
+                    "type": "string",
+                    "enum": [
+                      "AC",
+                      "AL",
+                      "AP",
+                      "AM",
+                      "BA",
+                      "CE",
+                      "ES",
+                      "GO",
+                      "MA",
+                      "MT",
+                      "MS",
+                      "MG",
+                      "PA",
+                      "PB",
+                      "PR",
+                      "PE",
+                      "PI",
+                      "RJ",
+                      "RN",
+                      "RS",
+                      "RO",
+                      "RR",
+                      "SC",
+                      "SP",
+                      "SE",
+                      "TO",
+                      "DF"
+                    ]
+                  },
+                  "cep": {
+                    "description": "CEP do ponto de atendimento. Devem ser informados apenas os 8 números sem qualquer máscara.",
+                    "type": "string",
+                    "pattern": "\\d{8}"
+                  },
+                  "produtos": {
+                    "description": "Indicação sobre quais produtos este ponto de atendimento oferece.",
                     "type": "object",
-                    "additionalProperties": false,
                     "required": [
-                      "latitude",
-                      "longitude",
-                      "logradouro",
-                      "bairro",
-                      "cidade",
-                      "estado",
-                      "cep",
-                      "produtos",
-                      "horarios_funcionamento"
+                      "Pix-saque",
+                      "Pix-troco"
                     ],
                     "properties": {
-                      "nome": {
-                        "description": "Nome do ponto de atendimento. Este nome é opcional e tem como função detalhar cada ponto de atendimento de um agente de saque ou do participante que, diretamente, venha a prestar serviço de saque.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 50
+                      "Pix-saque": {
+                        "description": "Indicação se o ponto de atendimento oferece Pix saque.",
+                        "type": "boolean"
                       },
-                      "latitude": {
-                        "description": "Latitude da posição geográfica. A faixa de valores válida é de -90 a 90, sendo que devem ser utilizadas pelo menos 5 casas decimais.",
-                        "type": "string",
-                        "pattern": "^((-?90[.][0]{5,})|((-?[1-8]?[0-9])[.][0-9]{5,}))$"
-                      },
-                      "longitude": {
-                        "description": "Longitude da posição geográfica. A faixa de valores válida é de -180 a 180, sendo que devem ser utilizadas pelo menos 5 casas decimais.",
-                        "type": "string",
-                        "pattern": "^-?((180[.][0]{5,})|(((1[0-7][0-9])[.][0-9]{5,})|(([1-9]?[0-9])[.][0-9]{5,})))$"
-                      },
-                      "logradouro": {
-                        "description": "Logradouro do ponto de atendimento.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 100
-                      },
-                      "bairro": {
-                        "description": "Bairro do ponto de atendimento.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 40
-                      },
-                      "cidade": {
-                        "description": "Cidade do ponto de atendimento.",
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 40
-                      },
-                      "estado": {
-                        "description": "Estado do ponto de atendimento.",
-                        "type": "string",
-                        "enum": [
-                          "AC",
-                          "AL",
-                          "AP",
-                          "AM",
-                          "BA",
-                          "CE",
-                          "ES",
-                          "GO",
-                          "MA",
-                          "MT",
-                          "MS",
-                          "MG",
-                          "PA",
-                          "PB",
-                          "PR",
-                          "PE",
-                          "PI",
-                          "RJ",
-                          "RN",
-                          "RS",
-                          "RO",
-                          "RR",
-                          "SC",
-                          "SP",
-                          "SE",
-                          "TO",
-                          "DF"
-                        ]
-                      },
-                      "cep": {
-                        "description": "CEP do ponto de atendimento. Devem ser informados apenas os 8 números sem qualquer máscara.",
-                        "type": "string",
-                        "pattern": "\\d{8}"
-                      },
-                      "produtos": {
-                        "description": "Indicação sobre quais produtos este ponto de atendimento oferece.",
-                        "type": "object",
-                        "required": [
-                          "Pix-saque",
-                          "Pix-troco"
-                        ],
-                        "properties": {
-                          "Pix-saque": {
-                            "description": "Indicação se o ponto de atendimento oferece Pix saque.",
-                            "type": "boolean"
-                          },
-                          "Pix-troco": {
-                            "description": "Indicação se o ponto de atendimento oferece Pix troco.",
-                            "type": "boolean"
-                          }
-                        }
-                      },
-                      "horarios_funcionamento": {
-                        "description": "Lista com os horários em que o Pix Saque ou Pix Troco estará disponível.  Caso algum dia da semana não seja informado isto significa que o serviço de saque não estará disponível naquele dia.",
-                        "type": "array",
-                        "minItems": 1,
-                        "additionalProperties": false,
-                        "items": {
-                          "required": [
-                            "dia"
-                          ],
-                          "properties": {
-                            "dia": {
-                              "description": "Lista de dias da semana.",
-                              "type": "string",
-                              "enum": [
-                                "SEGUNDA_FEIRA",
-                                "TERCA_FEIRA",
-                                "QUARTA_FEIRA",
-                                "QUINTA_FEIRA",
-                                "SEXTA_FEIRA",
-                                "SABADO",
-                                "DOMINGO"
-                              ]
-                            },
-                            "horario": {
-                              "description": "Horários de abertura e fechamento para a disponibilidade do serviço de saque. Os valores válidos vão de 00:00 a 23:59. Caso existam dois períodos de funcionamento dentro de um mesmo dia da semana este deve ser repetido para cada período. Estes horários não necessariamente coincidem com a abertura e o fechamento do ponto de saque para as suas atividades comerciais. Por exemplo: um determinado ponto de atendimento pode estar comercialmente aberto de 9:00 e 18:00 mas permitir saques apenas entre 12:00 e 16:00.",
-                              "type": "object",
-                              "additionalProperties": false,
-                              "properties": {
-                                "abertura_saque": {
-                                  "description": "Hora de abertura para serviço de saque.",
-                                  "type": "string",
-                                  "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
-                                },
-                                "fechamento_saque": {
-                                  "description": "Hora de fechamento para serviço de saque.",
-                                  "type": "string",
-                                  "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
-                                }
-                              }
-                            },
-                            "valor_maximo_disponivel": {
-                              "description": "Valor máximo disponível por saque",
-                              "type": "string",
-                              "pattern": "^(([0-9]{1,6})|(([0-9]{1,6})[.][0-9]{2}))$"
-                            }
-                          }
-                        }
-                      },
-                      "observacoes": {
-                        "description": "Observações gerais sobre o ponto de atendimento. O fornecimento dessa informação é facultativa para o agente de saque.",
-                        "type": "string",
-                        "maxLength": 250
+                      "Pix-troco": {
+                        "description": "Indicação se o ponto de atendimento oferece Pix troco.",
+                        "type": "boolean"
                       }
                     }
+                  },
+                  "horarios_funcionamento": {
+                    "description": "Lista com os horários em que o Pix Saque ou Pix Troco estará disponível.  Caso algum dia da semana não seja informado isto significa que o serviço de saque não estará disponível naquele dia.",
+                    "type": "array",
+                    "minItems": 1,
+                    "additionalProperties": false,
+                    "items": {
+                      "required": [
+                        "dia"
+                      ],
+                      "properties": {
+                        "dia": {
+                          "description": "Lista de dias da semana.",
+                          "type": "string",
+                          "enum": [
+                            "SEGUNDA_FEIRA",
+                            "TERCA_FEIRA",
+                            "QUARTA_FEIRA",
+                            "QUINTA_FEIRA",
+                            "SEXTA_FEIRA",
+                            "SABADO",
+                            "DOMINGO"
+                          ]
+                        },
+                        "horario": {
+                          "description": "Horários de abertura e fechamento para a disponibilidade do serviço de saque. Os valores válidos vão de 00:00 a 23:59. Caso existam dois períodos de funcionamento dentro de um mesmo dia da semana este deve ser repetido para cada período. Estes horários não necessariamente coincidem com a abertura e o fechamento do ponto de saque para as suas atividades comerciais. Por exemplo: um determinado ponto de atendimento pode estar comercialmente aberto de 9:00 e 18:00 mas permitir saques apenas entre 12:00 e 16:00.",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "abertura_saque": {
+                              "description": "Hora de abertura para serviço de saque.",
+                              "type": "string",
+                              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
+                            },
+                            "fechamento_saque": {
+                              "description": "Hora de fechamento para serviço de saque.",
+                              "type": "string",
+                              "pattern": "^([0-1][0-9]|2[0-3]):[0-5][0-9]$"
+                            }
+                          }
+                        },
+                        "valor_maximo_disponivel": {
+                          "description": "Valor máximo disponível por saque",
+                          "type": "string",
+                          "pattern": "^(([0-9]{1,6})|(([0-9]{1,6})[.][0-9]{2}))$"
+                        }
+                      }
+                    }
+                  },
+                  "observacoes": {
+                    "description": "Observações gerais sobre o ponto de atendimento. O fornecimento dessa informação é facultativa para o agente de saque.",
+                    "type": "string",
+                    "maxLength": 250
                   }
                 }
               }
             }
-          },
-          "meta": {
-            "type": "object",
-            "properties": {
-              "nome_transmissora": {
-                "type": "string",
-                "description": "Nome instituição fornecendo as informações",
-                "example": "Banco XYZ"
-              },
-              "isp_transmissora": {
-                "type": "string",
-                "minLength": 8,
-                "maxLength": 8,
-                "pattern": "^(\\d{8})$",
-                "description": "Número do CNPJ da instituição transmitindo os dados.\nDeve-se ter apenas os 8 primeiros números do CNPJ, sem máscara.",
-                "example": "45086378"
-              },
-              "total_registros": {
-                "type": "integer",
-                "description": "Total de pontos de atendimento encontrados",
-                "example": 1
-              },
-              "total_paginas": {
-                "type": "integer",
-                "description": "Total de páginas para os registros encontrados",
-                "example": 1
-              }
-            },
-            "required": [
-              "nome_transmissora",
-              "isp_transmissora",
-              "total_registros",
-              "total_paginas"
-            ]
-          },
-          "links": {
-            "type": "object",
-            "properties": {
-              "self": {
-                "type": "string",
-                "description": "URI da página atualmente requisitada.",
-                "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3&page-size=25"
-              },
-              "first": {
-                "type": "string",
-                "description": "URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira não retornar atributo ou retornar 'null'.",
-                "example": "https://api.banco.com.br/open-banking/pontosPix/v1/page=1&page-size=25"
-              },
-              "prev": {
-                "type": "string",
-                "description": "URI da página anterior dessa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira, não retornar atributo ou retornar 'null'.", 
-                "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2&page-size=25"
-              },
-              "next": {
-                "type": "string",
-                "description": "URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
-                "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4&page-size=25"
-              },
-              "last": {
-                "type": "string",
-                "description": "URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
-                "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=5&page-size=25"
-              }
-            },
-            "required": [
-              "self"
-            ]
-      
           }
-        },
-        "parameters": {
-          "page": {
-            "name": "page",
-            "in": "query",
-            "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º.",
-            "schema": {
-              "type": "integer",
-              "default": 1,
-              "minimum": 1
-          }
-        },
-        "pageSize": {
-          "name": "page-size",
-          "in": "query",
-          "description": "Quantidade total de registros por páginas.",
-          "schema": {
+        }
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "nome_transmissora": {
+            "type": "string",
+            "description": "Nome instituição fornecendo as informações",
+            "example": "Banco XYZ"
+          },
+          "isp_transmissora": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 8,
+            "pattern": "^(\\d{8})$",
+            "description": "Número do CNPJ da instituição transmitindo os dados.\nDeve-se ter apenas os 8 primeiros números do CNPJ, sem máscara.",
+            "example": "45086378"
+          },
+          "total_registros": {
             "type": "integer",
-            "default": 100,
-            "minimum": 1         
+            "description": "Total de pontos de atendimento encontrados",
+            "example": 1
+          },
+          "total_paginas": {
+            "type": "integer",
+            "description": "Total de páginas para os registros encontrados",
+            "example": 1
+          }
+        },
+        "required": [
+          "nome_transmissora",
+          "isp_transmissora",
+          "total_registros",
+          "total_paginas"
+        ]
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "description": "URI da página atualmente requisitada.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3&page-size=25"
+          },
+          "first": {
+            "type": "string",
+            "description": "URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira não retornar atributo ou retornar 'null'.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/page=1&page-size=25"
+          },
+          "prev": {
+            "type": "string",
+            "description": "URI da página anterior dessa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira, não retornar atributo ou retornar 'null'.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2&page-size=25"
+          },
+          "next": {
+            "type": "string",
+            "description": "URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4&page-size=25"
+          },
+          "last": {
+            "type": "string",
+            "description": "URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
+            "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=5&page-size=25"
+          }
+        },
+        "required": [
+          "self"
+        ]
+      }
+    },
+    "parameters": {
+      "page": {
+        "name": "page",
+        "in": "query",
+        "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º.",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "default": 1,
+          "minimum": 1
+        }
+      },
+      "pageSize": {
+        "name": "page-size",
+        "in": "query",
+        "description": "Quantidade total de registros por páginas.",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "default": 100,
+          "minimum": 1
         }
       }
     }

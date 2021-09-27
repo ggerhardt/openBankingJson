@@ -144,7 +144,7 @@
                         "isp_transmissora": "99999999",
                         "total_registros": 1,
                         "total_paginas": 1,
-                        "dataHora_requisicao": "2021-08-01T04:30:00Z"
+                        "dataHora_geracao_dados": "2021-08-01T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/"
@@ -422,7 +422,7 @@
                         "isp_transmissora": "99999999",
                         "total_registros": 3,
                         "total_paginas": 2,
-                        "dataHora_requisicao": "2021-08-02T04:30:00Z"
+                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/page=2&page-size=2",
@@ -772,7 +772,7 @@
                         "isp_transmissora": "99999999",
                         "total_registros": 4,
                         "total_paginas": 2,
-                        "dataHora_requisicao": "2021-08-02T04:30:00Z"
+                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=1&page-size=4",
@@ -987,7 +987,7 @@
         "properties": {
           "nome_transmissora": {
             "type": "string",
-            "description": "Nome instituição fornecendo as informações",
+            "description": "Nome instituição fornecendo as informações.",
             "example": "Banco XYZ"
           },
           "isp_transmissora": {
@@ -1000,15 +1000,17 @@
           },
           "total_registros": {
             "type": "integer",
-            "description": "Total de pontos de atendimento encontrados",
+            "description": "Total de pontos de atendimento encontrados.",
+            "minimum": 0,
             "example": 253
           },
           "total_paginas": {
             "type": "integer",
-            "description": "Total de páginas para os registros encontrados",
+            "description": "Total de páginas para os registros encontrados.",
+            "minimum": 1,
             "example": 1
           },
-          "dataHora_requisicao": {
+          "dataHora_geracao_dados": {
             "description": "Data e hora da consulta, conforme especificação RFC-3339, formato UTC.",
             "type": "string",
             "maxLength": 20,
@@ -1021,7 +1023,7 @@
           "isp_transmissora",
           "total_registros",
           "total_paginas",
-          "dataHora_requisicao"
+          "dataHora_geracao_dados"
         ]
       },
       "links": {
@@ -1032,34 +1034,39 @@
             "type": "string",
             "description": "URI da página atualmente requisitada.",
             "format": "uri",
+            "minLength": 1,
             "maxLength": 2000,
             "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=3&page-size=25"
           },
           "first": {
             "type": "string",
-            "description": "URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira não retornar atributo ou retornar 'null'.",
+            "description": "URI da primeira página que originou essa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira não retornar atributo.",
             "format": "uri",
+            "minLength": 1,
             "maxLength": 2000,
             "example": "https://api.banco.com.br/open-banking/pontosPix/v1/page=1&page-size=25"
           },
           "prev": {
             "type": "string",
-            "description": "URI da página anterior dessa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira, não retornar atributo ou retornar 'null'.",
+            "description": "URI da página anterior dessa lista de resultados. Restrição - Obrigatório quando não for a primeira página da resposta. Quando for a primeira, não retornar atributo.",
             "format": "uri",
+            "minLength": 1,
             "maxLength": 2000,
             "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2&page-size=25"
           },
           "next": {
             "type": "string",
-            "description": "URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
+            "description": "URI da próxima página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo.",
             "format": "uri",
+            "minLength": 1,
             "maxLength": 2000,
             "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=4&page-size=25"
           },
           "last": {
             "type": "string",
-            "description": "URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo ou retornar 'null'.",
+            "description": "URI da última página dessa lista de resultados. Restrição - Obrigatório quando não for a última página da resposta. Quando for a última, não retornar atributo.",
             "format": "uri",
+            "minLength": 1,
             "maxLength": 2000,
             "example": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=5&page-size=25"
           }

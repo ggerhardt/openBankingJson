@@ -1080,7 +1080,7 @@
       "page": {
         "name": "page",
         "in": "query",
-        "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º.",
+        "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º. Atenção: este parâmetro pode não ser disponibilizado pelo provedor da informação, caso ele considere a paginação desnecessária.",
         "schema": {
           "type": "integer",
           "format": "int32",
@@ -1091,7 +1091,7 @@
       "pageSize": {
         "name": "page-size",
         "in": "query",
-        "description": "Quantidade total de registros por páginas. Este campo, assim como 'page', é opcional. A estrutura 'links' do payload de resposta indica quando houve necessidade de paginação.",
+        "description": "Quantidade total de registros por páginas. Este campo, assim como 'page', é opcional. A estrutura 'links' do payload de resposta indica quando houve necessidade de paginação. Atenção: este parâmetro pode não ser disponibilizado pelo provedor da informação, caso ele considere a paginação desnecessária.",
         "schema": {
           "type": "integer",
           "format": "int32",

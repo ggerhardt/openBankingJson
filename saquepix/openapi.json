@@ -10,7 +10,7 @@
       "name": "Open Database License (ODbL)",
       "url": "http://opendefinition.org/licenses/odc-odbl/"
     },
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "servers": [
     {
@@ -141,7 +141,7 @@
                       ],
                       "meta": {
                         "nome_transmissora": "Banco XYZ",
-                        "isp_transmissora": "99999999",
+                        "ispb_transmissora": "99999999",
                         "total_registros": 1,
                         "total_paginas": 1,
                         "dataHora_geracao_dados": "2021-08-01T04:30:00Z"
@@ -419,7 +419,7 @@
                       ],
                       "meta": {
                         "nome_transmissora": "Banco XYZ",
-                        "isp_transmissora": "99999999",
+                        "ispb_transmissora": "99999999",
                         "total_registros": 3,
                         "total_paginas": 2,
                         "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
@@ -769,7 +769,7 @@
                       ],
                       "meta": {
                         "nome_transmissora": "Banco XYZ",
-                        "isp_transmissora": "99999999",
+                        "ispb_transmissora": "99999999",
                         "total_registros": 4,
                         "total_paginas": 2,
                         "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
@@ -804,7 +804,7 @@
           ],
           "properties": {
             "cnpj_agente_saque": {
-              "description": "Cnpj do agente de saque ou do participante que, diretamento, presta o serviço de saque. Com 14 dígitos, sem máscara.",
+              "description": "Cnpj do agente de saque ou do participante que, diretamente, preste o serviço de saque. Com 14 dígitos, sem máscara",
               "type": "string",
               "pattern": "^[0-9]{14}$"
             },
@@ -990,12 +990,12 @@
             "description": "Nome instituição fornecendo as informações.",
             "example": "Banco XYZ"
           },
-          "isp_transmissora": {
+          "ispb_transmissora": {
             "type": "string",
             "minLength": 8,
             "maxLength": 8,
             "pattern": "^(\\d{8})$",
-            "description": "Número do CNPJ da instituição transmitindo os dados.\nDeve-se ter apenas os 8 primeiros números do CNPJ, sem máscara.",
+            "description": "Número do ISPB (8 caracteres numéricos) do prestador do serviço de saque que está transmitindo os dados.",
             "example": "45086378"
           },
           "total_registros": {
@@ -1020,7 +1020,7 @@
         },
         "required": [
           "nome_transmissora",
-          "isp_transmissora",
+          "ispb_transmissora",
           "total_registros",
           "total_paginas",
           "dataHora_geracao_dados"

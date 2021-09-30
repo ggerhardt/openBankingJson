@@ -1,0 +1,801 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dados Abertos do SFN - Pontos de Atendimento de Pix Saque e Pix Troco",
+    "description": "Mais informações sobre as regulações associadas aos Dados Abertos do Sistema Financeiro Nacional podem ser encontradas em https://www.bcb.gov.br/estabilidadefinanceira/dadosabertossfn , inclusive as relativas ao assunto de pontos de atendimento de Pix Saque e Pix Troco.",
+    "contact": {
+      "email": "dadosabertossfn@bcb.gov.br"
+    },
+    "license": {
+      "name": "Open Database License (ODbL)",
+      "url": "http://opendefinition.org/licenses/odc-odbl/"
+    },
+    "version": "1.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://dadosabertos.banco.com.br/pontosPix/v1",
+      "description": "Exemplo de caminho onde a API estará disponível."
+    }
+  ],
+  "tags": [
+    {
+      "name": "Pix Saque e Pix Troco"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Pix Saque e Pix Troco"
+        ],
+        "summary": "Lista de pontos de atendimento de Pix Saque e Pix Troco",
+        "description": "Lista de informações relativas aos pontos de atendimento dos agentes de saque ou do participante que, diretamente, preste o serviço de saque.",
+        "operationId": "listarPontosPix_saque",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/page"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna um JSON com a lista de pontos de atendimento por agente de saque ou participante que, diretamente, preste o serviço de saque.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schema.json"
+                },
+                "examples": {
+                  "agente_saque_com_um_ponto_atendimento": {
+                    "value": {
+                      "registros": [
+                        {
+                          "cnpj_agente_saque": "22222222222222",
+                          "nome_agente_saque": "Supermercado A",
+                          "pontos_atendimento": [
+                            {
+                              "latitude": "-30.02795",
+                              "longitude": "-51.22322",
+                              "logradouro": "Rua 7 de Setembro, 586",
+                              "bairro": "Centro",
+                              "cidade": "Porto Alegre",
+                              "estado": "RS",
+                              "cep": "90010190",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Pix Troco apenas para compras acima de 200 reais",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "13:00"
+                                  },
+                                  "valor_maximo_disponivel": "70.00"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "meta": {
+                        "nome_transmissora": "Banco XYZ",
+                        "ispb_transmissora": "99999999",
+                        "total_registros": 1,
+                        "total_paginas": 1,
+                        "dataHora_geracao_dados": "2021-08-01T04:30:00Z"
+                      },
+                      "links": {
+                        "self": "https://api.banco.com.br/open-banking/pontosPix/v1/"
+                      }
+                    }
+                  },
+                  "agente_saque_com_varios_pontos_atendimento": {
+                    "value": {
+                      "registros": [
+                        {
+                          "cnpj_agente_saque": "33333333333333",
+                          "nome_agente_saque": "Supermercado B",
+                          "pontos_atendimento": [
+                            {
+                              "nome": "Filial Belo Horizonte",
+                              "latitude": "-19.93254",
+                              "longitude": "-43.94905",
+                              "logradouro": "Av Alvares Cabral 1605",
+                              "bairro": "Santo Agostinho",
+                              "cidade": "Belo Horizonte",
+                              "estado": "MG",
+                              "cep": "30170001",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Serviço de saque apenas no subsolo. Pix Troco apenas para compras acima de 20 reais",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "13:00"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "nome": "Filial Brasília",
+                              "latitude": "-15.80228",
+                              "longitude": "-47.88524",
+                              "logradouro": "Setor Bancário Sul Q. 3 BL B",
+                              "bairro": "Asa Sul",
+                              "cidade": "Brasília",
+                              "estado": "DF",
+                              "cep": "70074900",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": false
+                              },
+                              "observacoes": "Pix saque somente para múltiplos de R$20",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "60.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "60.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "20:00"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "DOMINGO",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "20:00"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                }
+                              ]
+                            },
+                            {
+                              "nome": "Filial São Paulo",
+                              "latitude": "-23.55970",
+                              "longitude": "-46.65760",
+                              "logradouro": "Av Paulista 1804",
+                              "bairro": "Bela Vista",
+                              "cidade": "São Paulo",
+                              "estado": "SP",
+                              "cep": "01310922",
+                              "produtos": {
+                                "Pix-saque": false,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Não abrimos nos feriados. Pix troco somente para valores abaixo de R$30,00",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "meta": {
+                        "nome_transmissora": "Banco XYZ",
+                        "ispb_transmissora": "99999999",
+                        "total_registros": 3,
+                        "total_paginas": 2,
+                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
+                      },
+                      "links": {
+                        "self": "https://api.banco.com.br/open-banking/pontosPix/v1/page=2&page-size=2",
+                        "first": "https://api.banco.com.br/open-banking/pontosPix/v1/page=1&page-size=2",
+                        "prev": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=1&page-size=2"
+                      }
+                    }
+                  },
+                  "varios_agentes_saque": {
+                    "value": {
+                      "registros": [
+                        {
+                          "cnpj_agente_saque": "33333333333333",
+                          "nome_agente_saque": "Supermercado B",
+                          "pontos_atendimento": [
+                            {
+                              "nome": "Supermercado B - Filial Belo Horizonte",
+                              "latitude": "-19.93254",
+                              "longitude": "-43.94905",
+                              "logradouro": "Av Alvares Cabral 1605",
+                              "bairro": "Santo Agostinho",
+                              "cidade": "Belo Horizonte",
+                              "estado": "MG",
+                              "cep": "30170001",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Serviço de saque apenas no subsolo. Pix Troco apenas para compras acima de 20 reais",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  }
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "13:00"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "nome": "Filial Brasília",
+                              "latitude": "-15.80228",
+                              "longitude": "-47.88524",
+                              "logradouro": "Setor Bancário Sul Q. 3 BL B",
+                              "bairro": "Asa Sul",
+                              "cidade": "Brasília",
+                              "estado": "DF",
+                              "cep": "70074900",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": false
+                              },
+                              "observacoes": "Pix saque somente para múltiplos de R$20",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "60.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "60.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "07:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "12:00"
+                                  },
+                                  "valor_maximo_disponivel": "200.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "22:00",
+                                    "fechamento_saque": "23:59"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "20:00"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                },
+                                {
+                                  "dia": "DOMINGO",
+                                  "horario": {
+                                    "abertura_saque": "08:00",
+                                    "fechamento_saque": "20:00"
+                                  },
+                                  "valor_maximo_disponivel": "80.00"
+                                }
+                              ]
+                            },
+                            {
+                              "nome": "Filial São Paulo",
+                              "latitude": "-23.55970",
+                              "longitude": "-46.65760",
+                              "logradouro": "Av Paulista 1804",
+                              "bairro": "Bela Vista",
+                              "cidade": "São Paulo",
+                              "estado": "SP",
+                              "cep": "01310922",
+                              "produtos": {
+                                "Pix-saque": false,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Não abrimos nos feriados. Pix troco somente para valores abaixo de R$30,00",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "00:00",
+                                    "fechamento_saque": "23:59"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "cnpj_agente_saque": "22222222222222",
+                          "nome_agente_saque": "Supermercado A",
+                          "pontos_atendimento": [
+                            {
+                              "latitude": "-30.02795",
+                              "longitude": "-51.22322",
+                              "logradouro": "Rua 7 de Setembro, 586",
+                              "bairro": "Centro",
+                              "cidade": "Porto Alegre",
+                              "estado": "RS",
+                              "cep": "90010190",
+                              "produtos": {
+                                "Pix-saque": true,
+                                "Pix-troco": true
+                              },
+                              "observacoes": "Pix Troco apenas para compras acima de 200 reais",
+                              "horarios_funcionamento": [
+                                {
+                                  "dia": "SEGUNDA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "TERCA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "QUARTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "QUINTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "SEXTA_FEIRA",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "18:00"
+                                  },
+                                  "valor_maximo_disponivel": "100.00"
+                                },
+                                {
+                                  "dia": "SABADO",
+                                  "horario": {
+                                    "abertura_saque": "09:00",
+                                    "fechamento_saque": "13:00"
+                                  },
+                                  "valor_maximo_disponivel": "70.00"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "meta": {
+                        "nome_transmissora": "Banco XYZ",
+                        "ispb_transmissora": "99999999",
+                        "total_registros": 4,
+                        "total_paginas": 2,
+                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
+                      },
+                      "links": {
+                        "self": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=1&page-size=4",
+                        "next": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=2&page-size=4",
+                        "last": "https://api.banco.com.br/open-banking/pontosPix/v1/page=2&page-size=4"
+                      }
+                    }                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "page": {
+        "name": "page",
+        "in": "query",
+        "description": "Número da página que está sendo requisitada. Ex: para 'page=2&page-size=25', requisição retornará do 26º registro ao 50º. Atenção: este parâmetro pode não ser disponibilizado pelo provedor da informação, caso ele considere a paginação desnecessária.",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "default": 1,
+          "minimum": 1
+        }
+      },
+      "pageSize": {
+        "name": "page-size",
+        "in": "query",
+        "description": "Quantidade total de registros de pontos de atendimento por página. Este campo, assim como 'page', é opcional. A estrutura 'links' do payload de resposta indica quando houve necessidade de paginação. Atenção: este parâmetro pode não ser disponibilizado pelo provedor da informação, caso ele considere a paginação desnecessária.",
+        "schema": {
+          "type": "integer",
+          "format": "int32",
+          "default": 100,
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

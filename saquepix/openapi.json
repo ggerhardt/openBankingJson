@@ -144,7 +144,7 @@
                         "ispb_transmissora": "99999999",
                         "total_registros": 1,
                         "total_paginas": 1,
-                        "dataHora_geracao_dados": "2021-08-01T04:30:00Z"
+                        "data_hora_geracao_dados": "2021-08-01T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/"
@@ -422,7 +422,7 @@
                         "ispb_transmissora": "99999999",
                         "total_registros": 3,
                         "total_paginas": 2,
-                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
+                        "data_hora_geracao_dados": "2021-08-02T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/page=2&page-size=2",
@@ -772,7 +772,7 @@
                         "ispb_transmissora": "99999999",
                         "total_registros": 4,
                         "total_paginas": 2,
-                        "dataHora_geracao_dados": "2021-08-02T04:30:00Z"
+                        "data_hora_geracao_dados": "2021-08-02T04:30:00Z"
                       },
                       "links": {
                         "self": "https://api.banco.com.br/open-banking/pontosPix/v1/?page=1&page-size=4",
@@ -1010,7 +1010,7 @@
             "minimum": 1,
             "example": 1
           },
-          "dataHora_geracao_dados": {
+          "data_hora_geracao_dados": {
             "description": "Data e hora da consulta, conforme especificação RFC-3339, formato UTC.",
             "type": "string",
             "maxLength": 20,
@@ -1023,7 +1023,7 @@
           "ispb_transmissora",
           "total_registros",
           "total_paginas",
-          "dataHora_geracao_dados"
+          "data_hora_geracao_dados"
         ]
       },
       "links": {

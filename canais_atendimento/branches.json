@@ -27,7 +27,7 @@
               "brand": {
                 "name": "Organização A"
               },
-              "companies": {
+              "company": {
                 "name": "Empresa A1",
                 "cnpjNumber": "45086338000138",
                 "urlComplementaryList": "https://empresaa1.com/branches-banking"
@@ -205,7 +205,7 @@
         "description": "Dependência de instituições financeiras e demais instituições, autorizadas a funcionar pelo Banco Central do Brasil, destinada à prática das atividades para as quais a instituição esteja regularmente habilitada.",
         "required": [
           "brand",
-          "companies",
+          "company",
           "lastModified",
           "branchIdentification",
           "postalAddress",

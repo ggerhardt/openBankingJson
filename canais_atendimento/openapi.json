@@ -25,7 +25,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "branches.json#/definitions/ResponseBranchesList"
+                  "$ref": "schema_2022.json#/definitions/ResponseBranchesList"
                 }
               }
             }
